@@ -1,24 +1,4 @@
 import logging
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-from asyncio.exceptions import TimeoutError
-from pyrogram.errors import SessionPasswordNeeded, FloodWait, PhoneNumberInvalid, ApiIdInvalid, PhoneCodeInvalid, PhoneCodeExpired, UserNotParticipant
-from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
-from telethon.client.chats import ChatMethods
-from csv import reader
-from telethon.sync import TelegramClient
-from telethon import functions, types, TelegramClient, connection, sync, utils, errors
-from telethon.tl.functions.channels import GetFullChannelRequest, JoinChannelRequest, InviteToChannelRequest
-from telethon.errors import SessionPasswordNeededError
-from telethon.errors.rpcerrorlist import PhoneCodeExpiredError, PhoneCodeInvalidError, PhoneNumberBannedError, PhoneNumberInvalidError, UserBannedInChannelError, PeerFloodError, UserPrivacyRestrictedError, ChatWriteForbiddenError, UserAlreadyParticipantError,  UserBannedInChannelError, UserAlreadyParticipantError,  UserPrivacyRestrictedError, ChatAdminRequiredError
-from telethon.sessions import StringSession
-from pyrogram import Client,filters
-from pyrogram.types import (
-    Message,
-    Voice,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    CallbackQuery,
-)
 
 # noinspection PyPackageRequirements
 from telegram.ext import (
@@ -64,6 +44,24 @@ def on_start_command(update: Update, _):
         start_message = '{}\n📣 <a href="https://t.me/{}">announcements channel</a>'.format(start_message, config.bot.channel)
 
     update.message.reply_html(start_message)
+    InlineKeyboardMarkup = (
+            [
+                [
+                    InlineKeyboardButton(
+                        "Commands", callback_data="cbcmnds"),
+                    InlineKeyboardButton(
+                        "About", callback_data="cbabout")
+                ],
+                [
+                    InlineKeyboardButton(
+                        "Basic Guide", callback_data="cbguide")
+                ],
+                [
+                    InlineKeyboardButton(
+                        "✚ Add Bot in Your Group ✚", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+                ]
+           ]
+        )
     reply_markup=InlineKeyboardMarkup(
             [
                 [
