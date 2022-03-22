@@ -39,13 +39,6 @@ def on_start_command(update: Update, _):
     logger.info('/start')
 
     start_message = Strings.START_MESSAGE
-    if config.bot.sourcecode:
-        start_message = '{}\n🛠 <a href="{}">source code</a>'.format(start_message, config.bot.sourcecode)
-    if config.bot.get('channel', None):
-        start_message = '{}\n📣 <a href="https://t.me/{}">announcements channel</a>'.format(start_message, config.bot.channel)
-
-    update.message.reply_html(start_message)
-    
     reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -64,6 +57,14 @@ def on_start_command(update: Update, _):
                 ]
            ]
         )
+    if config.bot.sourcecode:
+        start_message = '{}\n🛠 <a href="{}">source code</a>'.format(start_message, config.bot.sourcecode)
+    if config.bot.get('channel', None):
+        start_message = '{}\n📣 <a href="https://t.me/{}">announcements channel</a>'.format(start_message, config.bot.channel)
+
+    update.message.reply_html(start_message)
+    
+    
    
 
     return ConversationHandler.END
