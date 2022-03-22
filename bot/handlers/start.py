@@ -60,7 +60,7 @@ def on_start_command(update: Update, _):
                 ],
                 [
                     InlineKeyboardButton(
-                        "✚ Add Bot in Your Group ✚", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+                        "✚ Add Bot in Your Group ✚", url=f"https://t.me/codexun")
                 ]
            ]
         )
