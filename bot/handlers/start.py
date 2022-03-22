@@ -1,5 +1,9 @@
 import logging
 
+from pyrogram import Client, filters, __version__ as pyrover
+from pyrogram.errors import FloodWait
+from pytgcalls import (__version__ as pytover)
+
 # noinspection PyPackageRequirements
 from telegram.ext import (
     CallbackContext,
@@ -44,6 +48,25 @@ def on_start_command(update: Update, _):
         start_message = '{}\n📣 <a href="https://t.me/{}">announcements channel</a>'.format(start_message, config.bot.channel)
 
     update.message.reply_html(start_message)
+    reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "Commands", callback_data="cbcmnds"),
+                    InlineKeyboardButton(
+                        "About", callback_data="cbabout")
+                ],
+                [
+                    InlineKeyboardButton(
+                        "Basic Guide", callback_data="cbguide")
+                ],
+                [
+                    InlineKeyboardButton(
+                        "✚ Add Bot in Your Group ✚", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+                ]
+           ]
+        ),
+    )
 
     return ConversationHandler.END
 
