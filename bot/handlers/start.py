@@ -65,8 +65,8 @@ def on_start_command(update: Update, _):
                         "✚ Add Bot in Your Group ✚", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                 ]
            ]
-        ),
-    )
+        )
+   
 
     return ConversationHandler.END
 
