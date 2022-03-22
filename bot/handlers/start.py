@@ -1,8 +1,7 @@
 import logging
 
-from pyrogram import Client, filters, __version__ as pyrover
+from pyrogram import Client, filters, 
 from pyrogram.errors import FloodWait
-from pytgcalls import (__version__ as pytover)
 
 # noinspection PyPackageRequirements
 from telegram.ext import (
